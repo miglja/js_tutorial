@@ -1,0 +1,38 @@
+#! /usr/bin/node
+
+/*let urllib = require("urllib");
+let Phrase = require("mgj-palindrome");
+let url = "https://cdn.learnenough.com/phrases.txt";
+
+urllib.request(url, { followRedirect: true },
+    function(error, data, response) {
+        console.log("inside");
+        console.log(reponse.toString());
+        let body = data.toString();
+        console.log(body);
+        body.split("\n").forEach(function(line) {
+            let phrase = new Phrase(line);
+            if (phrase.palindrome()) {
+                console.log("palindrome detected: ", line);
+            }
+        });
+    }
+);*/
+let urllib = require("urllib");
+let Phrase = require("mgj-palindrome");
+let url = 'https://cdn.learnenough.com/phrases.txt'
+
+urllib.request(url, { followRedirect: true }).then(({err, data, res}) => {
+  let body = data.toString();
+  body.split("\n").forEach(function(line) {
+    let phrase = new Phrase(line);
+    if (phrase.palindrome()) {
+      console.log("palindrome detected:", line);
+    }
+  });
+  /* let lines = body.split("\n");
+  let palindromes = lines.filter(line => new Phrase(line).palindrome());
+  palindromes.forEach(function(palindrome) {
+    console.log("palindrome detected:", palindrome);
+  }); */
+});

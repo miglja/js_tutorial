@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "mgj-palindrome": "^0.1.0"
+    "jsdom": "^26.0.0",
+    "mgj-palindrome": "^0.1.0",
+    "urllib": "^4.6.11"
   }
 }

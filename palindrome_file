@@ -1,0 +1,14 @@
+#! /usr/bin/node
+
+let fs = require("fs");
+let Phrase = require("mgj-palindrome");
+
+let text = fs.readFileSync("phrases.txt", "utf-8");
+let output = "";
+text.split("\n").forEach(function(line) {
+    let phrase = new Phrase(line);
+    if (phrase.palindrome()) {
+        output += line + "\n";
+    }
+    fs.writeFileSync("palindromes.txt", output, "utf-8");
+});
